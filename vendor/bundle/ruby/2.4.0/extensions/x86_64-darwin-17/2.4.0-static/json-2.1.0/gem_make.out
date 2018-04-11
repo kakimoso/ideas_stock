@@ -1,0 +1,13 @@
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/json-2.1.0/ext/json
+/Users/iwai/.rbenv/versions/2.4.1/bin/ruby -r ./siteconf20180411-42978-1desxft.rb extconf.rb
+creating Makefile
+
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/json-2.1.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/json-2.1.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/json-2.1.0/ext/json
+make "DESTDIR=" install

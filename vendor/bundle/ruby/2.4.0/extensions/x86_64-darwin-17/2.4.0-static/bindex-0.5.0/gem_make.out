@@ -1,0 +1,15 @@
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/bindex-0.5.0/ext/bindex
+/Users/iwai/.rbenv/versions/2.4.1/bin/ruby -r ./siteconf20180411-42978-1h8qauf.rb extconf.rb
+creating Makefile
+
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.bundle
+
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20180411-42978-13dwk7z/bindex

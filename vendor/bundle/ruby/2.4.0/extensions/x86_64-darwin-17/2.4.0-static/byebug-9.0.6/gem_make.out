@@ -1,0 +1,19 @@
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/byebug-9.0.6/ext/byebug
+/Users/iwai/.rbenv/versions/2.4.1/bin/ruby -r ./siteconf20180411-42978-fseliv.rb extconf.rb
+creating Makefile
+
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20180411-42978-1r2sfxe/byebug

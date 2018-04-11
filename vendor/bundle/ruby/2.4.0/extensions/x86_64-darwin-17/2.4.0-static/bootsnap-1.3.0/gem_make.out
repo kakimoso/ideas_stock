@@ -1,0 +1,15 @@
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/bootsnap-1.3.0/ext/bootsnap
+/Users/iwai/.rbenv/versions/2.4.1/bin/ruby -r ./siteconf20180411-59654-enlnaa.rb extconf.rb
+creating Makefile
+
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/bootsnap-1.3.0/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/bootsnap-1.3.0/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/iwai/Applications/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/bootsnap-1.3.0/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20180411-59654-13j9fsh/bootsnap
