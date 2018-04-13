@@ -1,0 +1,11 @@
+<% provide(:title, '新規メモ') %>
+  <div class='row'>
+    <div class='col-md-8 col-md-offset-2'>
+      <%= form_for(@memo, url: memos_path(@memo)) do |f| %>
+      <%= f.submit '完了' , class: "btn btn-success btn-sm" %>
+      <hr>
+      <%= f.text_field :title, class: 'custom', placeholder: 'タイトル' %>
+      <%= f.text_area :content, class: 'custom', placeholder: '内容', size: '20x30' %>
+    <% end %>
+  </div>
+</div>

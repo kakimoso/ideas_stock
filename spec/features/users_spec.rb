@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Users', type: :feature do
+RSpec.feature 'Users', type: :feature, focus: true do
 
   # ゲストは新規ユーザ登録ができる
   scenario 'guest can make new account' do

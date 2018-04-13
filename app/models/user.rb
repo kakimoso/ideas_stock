@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6,
                                  message: '6文字以上で入力してください' },
                        allow_blank: true
+  has_many :memos
 
   private
 
