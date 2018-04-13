@@ -25,8 +25,9 @@ RSpec.feature 'Users', type: :feature, focus: true do
     visit root_path
     click_link 'ログイン'
     fill_in 'ID', with: user.name
-    fill_in 'password', with: user.password
+    fill_in 'パスワード', with: user.password
     click_button 'ログイン'
+    save_and_open_page
     expect(page).to have_content 'マイページ'
   end
 end

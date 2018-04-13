@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
-  # ログイン系のメソッド群
-  def login(user)
-    @user = User.find(:id, user.name)
-
+  # デバッグ用メッセージフレーム
+  def debugframe(message)
+    puts "[debug_message] : #{message}"
   end
 end
