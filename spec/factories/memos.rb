@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :memo do
-    title "MyText"
-    content "MyText"
-    user nil
+    title 'memo title'
+    content 'test content'
+    association :owner
   end
 end

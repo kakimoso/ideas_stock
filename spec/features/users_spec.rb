@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Users', type: :feature, focus: true do
+RSpec.feature 'Users', type: :feature do
 
   # ゲストは新規ユーザ登録ができる
   scenario 'guest can make new account' do
@@ -27,7 +27,6 @@ RSpec.feature 'Users', type: :feature, focus: true do
     fill_in 'ID', with: user.name
     fill_in 'パスワード', with: user.password
     click_button 'ログイン'
-    save_and_open_page
-    expect(page).to have_content 'マイページ'
+    expect(page).to have_content user.name
   end
 end
