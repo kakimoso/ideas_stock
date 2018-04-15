@@ -1,2 +1,21 @@
 <% provide(:title, 'マイページ') %>
-<h1 id='main_title'>マイページ</h1>
+  <div class="row">
+    <div class="sidebar col-md-3 col-md-offset">
+      <p>メモ一覧</p>
+      <ul id="list">
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+      </ul>
+    </div>
+    <div class="col-md-9 col-md-offset-3">
+      <div>
+        <p>main content</p>
+        <% @memos.each do |m| %>
+        <h2><%= m.title %></h2>
+        <%= m.content %>
+        <% end %>
+      </div>
+    </div>
+  </div>

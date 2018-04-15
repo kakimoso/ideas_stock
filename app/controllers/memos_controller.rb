@@ -1,5 +1,5 @@
 class MemosController < ApplicationController
-  # before_action :logged_in_user?, only: [:create, :new]
+  before_action :logged_in_user?, only: [:create, :new]
 
   def new
     @memo = Memo.new
@@ -10,7 +10,7 @@ class MemosController < ApplicationController
     if @memo.save
       redirect_to @memo.user
     else
-      flash[:danger] = '保存に失敗しました'
+      flash.now[:danger] = '保存に失敗しました'
       render 'new'
     end
   end

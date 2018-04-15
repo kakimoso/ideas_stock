@@ -1,4 +1,3 @@
-# ログイン系のロジックをもつ
 module SessionsHelper
   # ログインする
   def log_in(user)

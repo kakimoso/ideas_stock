@@ -1,3 +1,17 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.sidebar {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 5%;
+    padding-left: 2%;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto
+  }
+}

@@ -29,4 +29,22 @@ RSpec.feature 'Users', type: :feature, focus: true do
     click_button 'ログイン'
     expect(page).to have_content user.name
   end
+
+  # 自分の投稿を確認できる
+  scenario 'user can check his post' do
+    user = FactoryGirl.create(:user)
+    login_as user
+    click_link "マイページ / #{user.name}"
+    # ログインしてマイページ表示するまで
+    
+  end
+
+  def login_as(user)
+    visit root_path
+    click_link 'ログイン'
+    fill_in 'ID', with: user.name
+    fill_in 'パスワード', with: user.password
+    click_button 'ログイン'
+  end
+
 end

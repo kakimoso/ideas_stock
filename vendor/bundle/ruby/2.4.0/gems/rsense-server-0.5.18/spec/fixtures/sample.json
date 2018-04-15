@@ -1,0 +1,10 @@
+{
+    "command": "code_completion",
+    "project": "lib/rsense",
+    "file": "lib/rsense/server.rb",
+    "code": "def check(testarg)\n  testarg\nend\ncheck('hello')",
+    "location": {
+        "row": 2,
+        "column": 10
+    }
+}
