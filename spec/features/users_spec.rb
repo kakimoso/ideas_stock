@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Users', type: :feature, focus: true do
+RSpec.feature 'Users', type: :feature do
 
   # ゲストは新規ユーザ登録ができる
   scenario 'guest can make new account' do
@@ -30,7 +30,7 @@ RSpec.feature 'Users', type: :feature, focus: true do
     expect(page).to have_content user.name
   end
 
-  # 自分の投稿を確認できる
+  # 自分の投稿をマイページで確認できる
   scenario 'user can check his post' do
     memo = FactoryGirl.create(:memo)
     user = memo.user
@@ -38,8 +38,6 @@ RSpec.feature 'Users', type: :feature, focus: true do
     click_link "マイページ / #{user.name}"
     expect(page).to have_content user.name
     expect(page).to have_content memo.title
-    # ログインしてマイページ表示するまで
-
   end
 
   def login_as(user)

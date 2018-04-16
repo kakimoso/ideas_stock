@@ -1,0 +1,12 @@
+<div class="sidebar col-md-2">
+  <p>メモ一覧</p>
+  <% if !@memos.nil? %>
+    <ul id="list">
+      <% @memos.each do |m| %>
+        <li><%= link_to m.title, m %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <%= link_to "新規メモ", new_memo_path %>
+  <% end %>
+</div>

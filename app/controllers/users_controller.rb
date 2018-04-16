@@ -19,8 +19,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @memos = @user.memos.all
-    @memo = @user.memos.first
+    @memos = @user.memos.order(updated_at: :desc)
+    @memo = @memos.first
   end
 
   private

@@ -1,27 +1,19 @@
 <% provide(:title, 'マイページ') %>
   <div class="row">
-    <div class="sidebar col-md-3">
-      <p>メモ一覧</p>
-      <% if !@memos.nil? %>
-        <ul id="list">
-          <% @memos.each do |m| %>
-            <li><%= link_to m.title, m %></li>
-          <% end %>
-        </ul>
+    <%= render 'shared/sidebar' %>
+    <div class="col-md-9 col-md-offset-2">
+      <div>
+        <% if !@memo.nil? %>
+          <%= form_for @memo do |f| %>
+          <%= f.submit '編集確定', class: 'btn btn-success' %>
+          <h2 id='main_title'>
+            <%= f.text_field :title, class: 'custom', placeholder: 'タイトル' %>
+          </h2>
+          <%= f.text_area :content, class: 'custom', placeholder: '内容', size: '20x30' %>
+        <% end %>
       <% else %>
         <%= link_to "新規メモ", new_memo_path %>
       <% end %>
-    </div>
-    <div class="col-md-9 col-md-offset-3">
-      <div>
-        <% if !@memo.nil? %>
-          <%= form_for @memo, url: memos_path(@memo) do |f| %>
-          <h1 id='main_title'><%= f.text_field :title, class: 'custom', placeholder: 'タイトル' %></h1>
-          <%= f.text_area :content, class: 'custom', placeholder: '内容', size: '20x30' %>
-          <% end %>
-        <% else %>
-          <%= link_to "新規メモ", new_memo_path %>
-        <% end %>
     </div>
   </div>
 </div>
