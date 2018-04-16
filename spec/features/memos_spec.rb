@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Memos', type: :feature do
   # ユーザはメモを投稿することができる
-  scenario 'user can post memo and display at mypage' do
+  scenario 'user can post memo' do
     memo = FactoryGirl.build(:memo)
     user = memo.user
     login_as user

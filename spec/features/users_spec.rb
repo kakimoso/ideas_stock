@@ -32,11 +32,14 @@ RSpec.feature 'Users', type: :feature, focus: true do
 
   # 自分の投稿を確認できる
   scenario 'user can check his post' do
-    user = FactoryGirl.create(:user)
+    memo = FactoryGirl.create(:memo)
+    user = memo.user
     login_as user
     click_link "マイページ / #{user.name}"
+    expect(page).to have_content user.name
+    expect(page).to have_content memo.title
     # ログインしてマイページ表示するまで
-    
+
   end
 
   def login_as(user)
