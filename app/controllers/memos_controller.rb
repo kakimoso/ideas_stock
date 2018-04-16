@@ -1,5 +1,6 @@
 class MemosController < ApplicationController
-  before_action :logged_in_user?, only: %i[create new]
+  before_action :logged_in_user, only: %i[create new show update]
+  before_action :correct_user, only: %i[update]
 
   def new
     @memo = Memo.new
@@ -42,13 +43,24 @@ class MemosController < ApplicationController
     end
   end
 
+
   private
+
+  # メモの持ち主を検証する
+  def correct_user
+    # ログイン中のユーザのメモか
+    @memo = current_user.memos.find_by(id: params[:id])
+    if @memo.nil?
+      flash[:warning] = 'アクセスエラーが発生しました'
+      redirect_to(memo_user)
+    end
+  end
 
   def memo_params
     params.require(:memo).permit(:title, :content)
   end
 
-  # create実行時にログインしているユーザを返す
+  # memoコントローラのメソッド実行時にログインしているユーザを返す
   def memo_user
     @user = current_user
   end

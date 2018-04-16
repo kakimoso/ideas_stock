@@ -1,11 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
-  # デバッグ用メッセージフレーム
-  def debugframe(message)
-    puts "[debug_message] : #{message}"
-  end
-
   # ユーザーのログインを確認する
   def logged_in_user
     if current_user.nil?
@@ -13,4 +8,5 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
 end

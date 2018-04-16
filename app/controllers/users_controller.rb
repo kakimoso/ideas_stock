@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show]
+  # before_action :correct_user, only: [:show]
 
   def new
     @user = User.new
@@ -30,4 +31,11 @@ class UsersController < ApplicationController
                                  :password_confirmation)
   end
 
+  def correct_user
+    user = User.find(params[:id])
+    unless user == current_user
+      flash[:warning] = 'アクセスエラーが発生しました'
+      redirect_to(current_user)
+    end
+  end
 end

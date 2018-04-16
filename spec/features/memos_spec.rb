@@ -1,10 +1,11 @@
 require 'rails_helper'
 
-RSpec.feature 'Memos', type: :feature, focus: true do
+RSpec.feature 'Memos', type: :feature do
   # ユーザはメモを投稿することができる
   scenario 'user can post memo' do
     memo = FactoryGirl.build(:memo)
     user = memo.user
+    user.save
     login_as user
 
     expect  do
@@ -17,7 +18,7 @@ RSpec.feature 'Memos', type: :feature, focus: true do
   end
 
   # ユーザは投稿したメモを編集することができる
-  scenario 'user can post memo' do
+  scenario 'user can edit memo' do
     memo = FactoryGirl.create(:memo)
     other_memo = FactoryGirl.create(:memo, :other_memo, user: memo.user)
     escape_title = other_memo.title

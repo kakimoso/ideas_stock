@@ -9,7 +9,7 @@
           <li><%= link_to "新規登録", new_user_path %></li>
         <% else %>
           <li><%= link_to "マイページ / #{@current_user.name}", @current_user %></li>
-          <li><%= link_to "新規メモ", new_memo_path %></li>
+          <li><%= link_to "新規メモ", new_memo_path(action_id: @current_user.id) %></li>
         <% end %>
       </ul>
     </nav>
