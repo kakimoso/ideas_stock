@@ -35,7 +35,6 @@ class MemosController < ApplicationController
     @user = memo_user
     @memo = @user.memos.find(params[:id])
     if @memo.update_attributes(memo_params)
-      puts "debug-message : こっち通った"
       redirect_to @user
     else
       flash[:danger] = '保存に失敗しました'
@@ -57,7 +56,7 @@ class MemosController < ApplicationController
   end
 
   def memo_params
-    params.require(:memo).permit(:title, :content)
+    params.require(:memo).permit(:title, :content, :edit_flag)
   end
 
   # memoコントローラのメソッド実行時にログインしているユーザを返す

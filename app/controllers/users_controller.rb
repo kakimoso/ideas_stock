@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def update; end
 
-  # ユーザページで選択されたメモを編集可能にする
+  # ユーザページで選択されたメモを表示する
   def show
     @user = User.find(params[:id])
     @memos = @user.memos.order(updated_at: :desc)
@@ -32,6 +32,7 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'メモが見つかりません'
       @memo = @memos.first
     end
+    @memo_is_editable = @memo.editable?(current_user) unless @memos.count.zero?
     render template: 'users/show'
   end
 
@@ -49,4 +50,5 @@ class UsersController < ApplicationController
       redirect_to(current_user)
     end
   end
+
 end

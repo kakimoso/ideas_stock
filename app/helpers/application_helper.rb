@@ -12,7 +12,7 @@ module ApplicationHelper
   # タイトルが長い場合、短縮系にする
   def display_title(title)
     if title.length > 12
-      title[0, 11] + '...'
+      title[0, 12] + '...'
     else
       title
     end

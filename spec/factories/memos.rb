@@ -1,12 +1,17 @@
 FactoryGirl.define do
   factory :memo do
-    title 'memo title 1'
-    content 'test content'
+    sequence :title do |n|
+      "memo title #{n}"
+    end
+    sequence :content do |n|
+      "memo content #{n}"
+    end
+    edit_flag 2
     association :user
 
     trait :other_memo do
-      title 'memo title 2'
-      content 'this is other memo'
+      title 'other memo'
+      content 'this is other memo content'
     end
 
   end
