@@ -14,8 +14,28 @@ RSpec.describe Memo, type: :model do
     expect(user).to be_valid
   end
 
-  describe '#title' do
+  # 編集フラグは1~3のみ有効であること
+  it 'is valid memo which edit_flag is valid num' do
+    user = FactoryGirl.create(:user)
+    memo_0 = FactoryGirl.build(:memo, edit_flag: 0, user: user)
+    memo_1 = FactoryGirl.build(:memo, edit_flag: 1, user: user)
+    memo_2 = FactoryGirl.build(:memo, edit_flag: 2, user: user)
+    memo_3 = FactoryGirl.build(:memo, edit_flag: 3, user: user)
+    memo_4 = FactoryGirl.build(:memo, edit_flag: 4, user: user)
+    memo_a = FactoryGirl.build(:memo, edit_flag: 'a', user: user)
+    valids = [memo_1, memo_2, memo_3]
+    invalids = [memo_0, memo_4, memo_a]
+    memo_a.edit_flag = 'aaa'
+    puts "--debug : #{memo_a.edit_flag}"
+    valids.each do |v|
+      expect(v).to be_valid
+    end
+    invalids.each do |i|
+      expect(i).to_not be_valid
+    end
+  end
 
+  describe '#title' do
     # タイトルがなければ無効であること
     it { is_expected.to validate_presence_of :title }
 
@@ -31,5 +51,4 @@ RSpec.describe Memo, type: :model do
     # 内容はなくても有効であること
     it { is_expected.to_not validate_presence_of :content }
   end
-
 end

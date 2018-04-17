@@ -37,6 +37,7 @@ RSpec.feature 'Users', type: :feature do
     click_link "マイページ / #{user.name}"
     expect(page).to have_content user.name
     memos.each do |m|
+      # 自分が投稿したタイトルが全て表示されていることを確認する
       expect(page).to have_content display_title(m.title)
     end
   end
