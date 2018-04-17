@@ -22,8 +22,8 @@ RSpec.describe Memo, type: :model do
     # タイトルが長すぎる場合無効であること
     it {
       is_expected.to validate_length_of(:title)
-        .is_at_most(50)
-        .with_message('50文字以内で入力してください')
+        .is_at_most(25)
+        .with_message('25文字以内で入力してください')
     }
   end
 

@@ -24,13 +24,6 @@ RSpec.describe 'UsersApis', type: :request, focus: true do
         expect(response).to have_http_status(302)
       end
 
-      # メモ閲覧(show)
-      get memo_path(@memo)
-      aggregate_failures do
-        expect(response).to_not be_success
-        expect(response).to have_http_status(302)
-      end
-
       # ユーザプロフィール(show)
       get user_path(@user)
       aggregate_failures do

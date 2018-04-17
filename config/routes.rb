@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  get 'memos/new'
   root 'main_pages#home'
+  get 'memos/new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
-  get 'users/new'
-  get 'users/create'
-  get 'users/update'
-  get 'users/show'
+  delete '/logout', to: 'sessions#destroy'
   resources :users
   resources :memos
 end

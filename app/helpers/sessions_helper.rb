@@ -15,4 +15,9 @@ module SessionsHelper
   def logged_in_user?
     !current_user.nil?
   end
+
+  # セッションからuser_idを消す
+  def log_out
+    session[:user_id] = nil
+  end
 end

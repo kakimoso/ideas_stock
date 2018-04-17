@@ -4,7 +4,8 @@
     <div class="col-md-9 col-md-offset-2">
       <div>
         <% if !@memo.nil? %>
-          <%= form_for @memo do |f| %>
+          <%= form_for @memo, url: memo_path(@memo, user_id: @memo.user.id) do |f| %>
+          <%= render 'shared/error_messages', object: @memo %>
           <%= f.submit '編集確定', class: 'btn btn-success' %>
           <h2 id='main_title'>
             <%= f.text_field :title, class: 'custom', placeholder: 'タイトル' %>
@@ -12,7 +13,8 @@
           <%= f.text_area :content, class: 'custom', placeholder: '内容', size: '20x30' %>
         <% end %>
       <% else %>
-        <%= link_to "新規メモ", new_memo_path %>
+        <p>メモがまだありません。</p>
+        <%= link_to "新規メモ", new_memo_path %><c>を投稿しましょう。</c>
       <% end %>
     </div>
   </div>

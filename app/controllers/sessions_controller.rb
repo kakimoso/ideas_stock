@@ -16,4 +16,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  # ヘルパーのログアウトメソッドを呼ぶ
+  def destroy
+    log_out if logged_in_user?
+    redirect_to root_path
+  end
+
 end

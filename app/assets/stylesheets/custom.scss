@@ -315,3 +315,17 @@ span.picture {
     border: 0;
   }
 }
+
+/* sidebar */
+
+div.sidebar-nav{
+  table{
+    table-layout: fixed;
+  }
+  table, th, td {
+    border: 1px solid #bbb;
+  }
+  th{
+    width: 170px;
+  }
+}

@@ -1,12 +1,18 @@
-<div class="sidebar col-md-2">
-  <p>メモ一覧</p>
-  <% if !@memos.nil? %>
-    <ul id="list">
-      <% @memos.each do |m| %>
-        <li><%= link_to m.title, m %></li>
+<div class="col-md-2">
+  <div class="sidebar-nav affix" role="complementary">
+    <div class="nav">
+      <% if !@memos.nil? && @memos.count != 0 %>
+        <table>
+          <tbody>
+            <th>メモ一覧</th>
+            <% @memos.each do |m| %>
+              <tr>
+                <td><%= link_to display_title(m.title), user_path(params[:id], memo_id: m.id) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       <% end %>
-    </ul>
-  <% else %>
-    <%= link_to "新規メモ", new_memo_path %>
-  <% end %>
+    </div>
+  </div>
 </div>

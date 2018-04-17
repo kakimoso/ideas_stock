@@ -18,10 +18,21 @@ class UsersController < ApplicationController
 
   def update; end
 
+  # ユーザページで選択されたメモを編集可能にする
   def show
     @user = User.find(params[:id])
     @memos = @user.memos.order(updated_at: :desc)
-    @memo = @memos.first
+    begin
+      @memo = if !params[:memo_id].nil?
+                @memos.find(params[:memo_id])
+              else
+                @memos.first
+              end
+    rescue ActiveRecord::RecordNotFound
+      flash.now[:danger] = 'メモが見つかりません'
+      @memo = @memos.first
+    end
+    render template: 'users/show'
   end
 
   private

@@ -8,4 +8,13 @@ module ApplicationHelper
       page_title + ' | ' + base_title
     end
   end
+
+  # タイトルが長い場合、短縮系にする
+  def display_title(title)
+    if title.length > 12
+      title[0, 11] + '...'
+    else
+      title
+    end
+  end
 end
