@@ -9,7 +9,7 @@ RSpec.describe 'UsersApis', type: :request, focus: true do
     end
 
     # 非ログイン時のアクセス無効テスト
-    it 'invalid if not logged in' do
+    it 'invalid when not logged in' do
       # 新規メモ(new)
       get new_memo_path
       aggregate_failures do
@@ -33,7 +33,7 @@ RSpec.describe 'UsersApis', type: :request, focus: true do
     end
 
     # ログイン時のアクセス無効テスト
-    it 'invalid if logged in' do
+    it 'invalid when logged in' do
       login
       @other_memo.user = FactoryGirl.create(:user, :other_user)
       @other_memo.save

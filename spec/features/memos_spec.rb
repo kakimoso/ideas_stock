@@ -33,21 +33,25 @@ RSpec.feature 'Memos', type: :feature do
     click_link "マイページ / #{user.name}"
 
     # メモを１件編集する
-    save_and_open_page
-    click_link memo.title
+    click_link display_title(memo.title)
     fill_in :memo_title, with: editted_title
     fill_in :memo_content, with: editted_content
     click_button '編集確定'
 
     click_link "マイページ / #{user.name}"
-    click_link editted_title
+    click_link display_title(editted_title)
     expect(page).to have_content editted_title
     expect(page).to have_content editted_content
 
     # もう一件は編集されていないことを確認
-    click_link other_memo.title
+    click_link display_title(other_memo.title)
     expect(page).to have_content escape_title
     expect(page).to have_content escape_content
+  end
+
+  # メモの公開・非公開・編集可否テスト
+  scenario 'memo visible? and editable?' do
+
   end
 
   def login_as(user)
@@ -57,4 +61,14 @@ RSpec.feature 'Memos', type: :feature do
     fill_in 'パスワード', with: user.password
     click_button 'ログイン'
   end
+
+  # タイトルが長い場合、短縮系にする
+  def display_title(title)
+    if title.length > 12
+      title[0, 12] + '...'
+    else
+      title
+    end
+  end
+
 end
