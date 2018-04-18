@@ -11,8 +11,8 @@ FactoryGirl.define do
     # create実行後に (memoを,5件作る,カラム名: 値)
     after(:create) do |user|
       create_list(:memo, 5, user: user)
-      create_list(:ro_memo, 2, user: user)
-      create_list(:private_memo, 2, user: user)
+      create_list(:ro_memo, 1, user: user)
+      create_list(:private_memo, 1, user: user)
     end
   end
 end

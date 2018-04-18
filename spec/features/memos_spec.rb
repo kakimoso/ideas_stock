@@ -51,7 +51,29 @@ RSpec.feature 'Memos', type: :feature do
 
   # メモの公開・非公開・編集可否テスト
   scenario 'memo visible? and editable?' do
+    # 他ユーザでログインし、ユーザのメモのアクセス制御をテストする
+    user = FactoryGirl.create(:user)
+    other_user = FactoryGirl.create(:user, :other_user)
+    login_as other_user
+    visit user_path(user)
 
+    open_memo = user.memos.find_by_edit_flag(3)
+    read_only_memo = user.memos.find_by_edit_flag(2)
+    private_memo = user.memos.find_by_edit_flag(1)
+
+    aggregate_failures do
+      # 非公開メモは表示されていないこと
+      expect(page).to have_content display_title(open_memo.title)
+      expect(page).to have_content display_title(read_only_memo.title)
+      expect(page).to_not have_content display_title(private_memo.title)
+
+      click_link display_title(open_memo.title)
+      expect(page).to have_css 'input', class: 'btn', visible: '編集確定'
+      expect(page).to_not have_css 'select'
+
+      click_link display_title(read_only_memo.title)
+      expect(page).to_not have_css 'input', class: 'btn', visible: '編集確定'
+    end
   end
 
   def login_as(user)
@@ -70,5 +92,4 @@ RSpec.feature 'Memos', type: :feature do
       title
     end
   end
-
 end

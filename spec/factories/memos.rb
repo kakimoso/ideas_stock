@@ -15,10 +15,12 @@ FactoryGirl.define do
     end
 
     factory :ro_memo do
+      title 'read only'
       edit_flag 2
     end
 
     factory :private_memo do
+      title 'private'
       edit_flag 1
     end
 
