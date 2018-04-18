@@ -8,7 +8,7 @@ class Memo < ApplicationRecord
             presence: true,
             format: { with: VALID_EDFLAG_REGEX }
 
-  # メモの所持者もしくは3なら編集可能とし、is_editableにtrueをセット
+  # メモの所持者もしくは3なら編集可能とする
   def editable?(current_user)
     user = User.find_by(id: user_id)
     (user == current_user || edit_flag == 3)

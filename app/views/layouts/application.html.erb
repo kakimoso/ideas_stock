@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <%= render 'layouts/sources' %>
-
   </head>
 
   <body>
@@ -23,7 +17,8 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <%= render 'layouts/header' %>
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <%= render 'layouts/sidebar' %>
+        <!-- サイドバーを表示するページだけ埋め込む -->
+        <%= yield(:sidebar) %>
         <!-- /.navbar-collapse -->
       </nav>
 

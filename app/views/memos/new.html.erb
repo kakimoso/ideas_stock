@@ -4,12 +4,9 @@
       <%= form_for(@memo, url: memos_path(@memo)) do |f| %>
       <div class='form-group'>
         <div class='row form-inline'>
-          <div class='col-md-3 col-md-offset-10'>
-            <%= f.submit '完了' , class: "btn btn-success btn-sm form-control" %>
-          </div>
-          <div class='col-md-3'>
-            <%= f.select :edit_flag, [['公開・編集可', 3],['公開・編集不可', 2],['非公開', 1]],
-             class: "form-control" %>
+            <%= f.submit '完了' , class: "btn btn-success btn-sm" %>
+          <div class='col-md-3 col-md-offset-9'>
+            <%= f.select :edit_flag, [['公開・編集可', 3],['公開・編集不可', 2],['非公開', 1]], class: "form-control" %>
           </div>
         </div>
         <hr>

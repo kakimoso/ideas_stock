@@ -1,6 +1,8 @@
 <% provide(:title, 'マイページ') %>
+<% content_for :sidebar do %>
+<%= render 'layouts/sidebar' %>
+<% end %>
   <div class="row">
-    <!-- <%= render 'shared/sidebar' %> -->
     <div class="col-md-9 col-md-offset-2">
       <div>
         <% if !@memo.nil? %>

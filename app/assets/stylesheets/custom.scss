@@ -333,7 +333,8 @@ div.sidebar-nav{
 
 // ここからコピペ
 
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+// @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+@import url('https://use.fontawesome.com/releases/v5.0.6/css/all.css');
 @media(min-width:768px) {
     body {
         margin-top: 50px;
@@ -357,7 +358,7 @@ div.sidebar-nav{
     }
 
     #page-wrapper {
-        padding: 22px 10px;
+        padding: 10px 10px;
     }
 }
 

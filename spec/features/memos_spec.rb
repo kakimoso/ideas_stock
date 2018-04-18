@@ -33,6 +33,7 @@ RSpec.feature 'Memos', type: :feature do
     click_link "マイページ / #{user.name}"
 
     # メモを１件編集する
+    save_and_open_page
     click_link memo.title
     fill_in :memo_title, with: editted_title
     fill_in :memo_content, with: editted_content
