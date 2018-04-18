@@ -16,8 +16,9 @@ class Memo < ApplicationRecord
     (user == current_user || edit_flag == 3)
   end
 
-  # メモ非公開設定ならfalseを返す
-  def visible?
-    edit_flag != 1
+  # メモが閲覧可能ならtrueを返す
+  def visible?(current_user)
+    user = User.find_by(id: user_id)
+    (user == current_user || edit_flag != 1)
   end
 end

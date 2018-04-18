@@ -1,7 +1,6 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
   <ul class="nav navbar-nav side-nav">
-    <% if !@memos.nil? && @memos.count != 0 %>
-      <li><a>メモ一覧</a></li>
+    <% if !@memos.nil? && !@memos.count.zero? %>
       <li>
         <a data-toggle="collapse" data-target="#submenu-1">
           <i class="fas fa-book"></i>
@@ -31,10 +30,9 @@
       <% end %>
     <% else %>
       <li>
-        <%= link_to(new_memo_path) do %>
-        <i class="far fa-sticky-note"></i>
-        新規メモ</a>
-        <% end %>
+        <a>
+        <i class="far fa-comment"></i>
+        <br>表示できるメモはありません</a>
       </li>
     <% end %>
   </ul>
