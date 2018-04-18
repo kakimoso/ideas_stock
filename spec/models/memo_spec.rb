@@ -26,7 +26,6 @@ RSpec.describe Memo, type: :model do
     valids = [memo_1, memo_2, memo_3]
     invalids = [memo_0, memo_4, memo_a]
     memo_a.edit_flag = 'aaa'
-    puts "--debug : #{memo_a.edit_flag}"
     valids.each do |v|
       expect(v).to be_valid
     end

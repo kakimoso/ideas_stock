@@ -1,21 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= render 'layouts/sources' %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
-    <div class='container'>
-      <%= render 'layouts/header' %>
-      <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-      <% end %>
-      <%= yield %>
+    <div id="throbber" style="display:none; min-height:120px;"></div>
+    <div id="noty-holder"></div>
+    <div id="wrapper">
+
+      <!-- Navigation -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <%= render 'layouts/header' %>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <%= render 'layouts/sidebar' %>
+        <!-- /.navbar-collapse -->
+      </nav>
+
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <!-- Page Heading -->
+          <div class="row" id="main">
+            <div class="col-sm-12 col-md-12" id="content">
+              <% flash.each do |message_type, message| %>
+                <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+              <% end %>
+              <%= yield %>
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+
+      <!-- /#page-wrapper -->
     </div>
+    <!-- /#wrapper -->
   </body>
 </html>
