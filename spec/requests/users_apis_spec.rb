@@ -24,7 +24,7 @@ RSpec.describe 'UsersApis', type: :request, focus: true do
           content: @other_memo.content
         } }
       aggregate_failures do
-        expect(response).to be_success
+        expect(response).to_not be_success
         expect(response).to have_http_status(302)
       end
 
