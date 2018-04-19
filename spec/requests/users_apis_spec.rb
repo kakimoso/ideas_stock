@@ -18,9 +18,13 @@ RSpec.describe 'UsersApis', type: :request, focus: true do
       end
 
       # メモ作成(create)
-      post memos_path(@other_memo)
+      post memos_path, params: {
+        memo: {
+          title: @other_memo.title,
+          content: @other_memo.content
+        } }
       aggregate_failures do
-        expect(response).to_not be_success
+        expect(response).to be_success
         expect(response).to have_http_status(302)
       end
 

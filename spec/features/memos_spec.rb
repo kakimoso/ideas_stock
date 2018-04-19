@@ -5,7 +5,6 @@ RSpec.feature 'Memos', type: :feature do
   scenario 'user can post memo' do
     memo = FactoryGirl.build(:memo)
     user = memo.user
-    user.save
     login_as user
 
     expect  do
@@ -21,11 +20,12 @@ RSpec.feature 'Memos', type: :feature do
   scenario 'user can edit memo' do
     memo = FactoryGirl.create(:memo)
     other_memo = FactoryGirl.create(:memo, :other_memo, user: memo.user)
+    user = memo.user
+
     escape_title = other_memo.title
     escape_content = other_memo.content
-    user = memo.user
-    editted_title = 'タイトル編集テスト'
-    editted_content = '内容編集テスト'
+    edited_title = 'タイトル編集テスト'
+    edited_content = '内容編集テスト'
 
     login_as user
 
@@ -34,19 +34,20 @@ RSpec.feature 'Memos', type: :feature do
 
     # メモを１件編集する
     click_link display_title(memo.title)
-    fill_in :memo_title, with: editted_title
-    fill_in :memo_content, with: editted_content
+    fill_in :memo_title, with: edited_title
+    fill_in :memo_content, with: edited_content
     click_button '編集確定'
 
     click_link "マイページ / #{user.name}"
-    click_link display_title(editted_title)
-    expect(page).to have_content editted_title
-    expect(page).to have_content editted_content
+    click_link display_title(edited_title)
+    expect(find_field(id: 'memo_title').value).to eq edited_title
+    expect(find_field(id: 'memo_content').value).to eq edited_content
 
     # もう一件は編集されていないことを確認
     click_link display_title(other_memo.title)
-    expect(page).to have_content escape_title
-    expect(page).to have_content escape_content
+    expect(find_field(id: 'memo_title').value).to eq escape_title
+    expect(find_field(id: 'memo_content').value).to eq escape_content
+
   end
 
   # メモの公開・非公開・編集可否テスト
@@ -69,7 +70,7 @@ RSpec.feature 'Memos', type: :feature do
 
       click_link display_title(open_memo.title)
       expect(page).to have_css 'input', class: 'btn', visible: '編集確定'
-      expect(page).to_not have_css 'select'
+      expect(page).to_not have_css 'select', id: 'memo_edit_flag'
 
       click_link display_title(read_only_memo.title)
       expect(page).to_not have_css 'input', class: 'btn', visible: '編集確定'

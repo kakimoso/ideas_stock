@@ -20,12 +20,9 @@ RSpec.feature 'Users', type: :feature do
   scenario 'user can login' do
     user = FactoryGirl.create(:user)
 
-    visit root_path
-    click_link 'ログイン'
-    fill_in 'ID', with: user.name
-    fill_in 'パスワード', with: user.password
-    click_button 'ログイン'
+    login_as user
     expect(page).to have_content user.name
+    expect(page).to have_current_path "/users/#{user.id}"
   end
 
   # 自分の投稿をマイページで確認できる
