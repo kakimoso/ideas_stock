@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  # ファクトリが正しく設定されていること
+  # 有効なファクトリを持つこと
   it 'has a valid factory' do
     @user = FactoryGirl.create(:user)
     expect(@user).to be_valid
@@ -18,7 +18,6 @@ RSpec.describe User, type: :model do
     it {
       is_expected.to validate_length_of(:name)
         .is_at_most(20)
-        .with_message('20文字以内で入力してください')
     }
   end
 
@@ -30,7 +29,6 @@ RSpec.describe User, type: :model do
     it {
       is_expected.to validate_length_of(:password)
         .is_at_least(6)
-        .with_message('6文字以上で入力してください')
     }
   end
 end

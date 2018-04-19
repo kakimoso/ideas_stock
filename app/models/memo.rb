@@ -2,7 +2,7 @@ class Memo < ApplicationRecord
   belongs_to :user
   validates :title,
             presence: true,
-            length: { maximum: 25, message: '25文字以内で入力してください' }
+            length: { maximum: 25 }
   VALID_EDFLAG_REGEX = /[1-3]/
   validates :edit_flag,
             presence: true,

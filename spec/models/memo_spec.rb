@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Memo, type: :model do
-  # ファクトリが正しく設定されていること
+  # 有効なファクトリを持つこと
   it 'has a valid factory' do
     memo = FactoryGirl.create(:memo)
     expect(memo).to be_valid
@@ -42,7 +42,6 @@ RSpec.describe Memo, type: :model do
     it {
       is_expected.to validate_length_of(:title)
         .is_at_most(25)
-        .with_message('25文字以内で入力してください')
     }
   end
 

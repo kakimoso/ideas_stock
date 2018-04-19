@@ -1,12 +1,10 @@
 class User < ApplicationRecord
   has_secure_password
   validates :name, presence: true,
-                   length: { maximum: 20,
-                             message: '20文字以内で入力してください' },
+                   length: { maximum: 20 },
                    uniqueness: true
   validates :password, presence: true
-  validates :password, length: { minimum: 6,
-                                 message: '6文字以上で入力してください' },
+  validates :password, length: { minimum: 6 },
                        allow_blank: true
   has_many :memos
 

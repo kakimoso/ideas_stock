@@ -14,7 +14,6 @@ RSpec.feature 'Users', type: :feature do
       fill_in 'パスワード(確認)', with: user.password_confirmation
       click_button '登録'
     end.to change(User, :count).by(1)
-    expect(page).to have_content user.name
   end
 
   # ログインできる
