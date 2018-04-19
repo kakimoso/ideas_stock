@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'UsersApis', type: :request, focus: true do
+RSpec.describe 'UsersApis', type: :request do
   describe 'invalid pattern' do
     before do
       @memo = FactoryGirl.create(:memo)
@@ -22,7 +22,8 @@ RSpec.describe 'UsersApis', type: :request, focus: true do
         memo: {
           title: @other_memo.title,
           content: @other_memo.content
-        } }
+        }
+      }
       aggregate_failures do
         expect(response).to_not be_success
         expect(response).to have_http_status(302)
@@ -43,7 +44,11 @@ RSpec.describe 'UsersApis', type: :request, focus: true do
       @other_memo.save
 
       # 他ユーザのメモ編集(update)
-      patch memo_path(@other_memo), params: { id: @memo.id }
+      patch memo_path(@other_memo),
+            params: {
+              user_id: @memo.user_id,
+              memo: FactoryGirl.attributes_for(:memo)
+            }
       aggregate_failures do
         expect(response).to_not be_success
         expect(response).to have_http_status(302)

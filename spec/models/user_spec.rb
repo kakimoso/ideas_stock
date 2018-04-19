@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  # 有効なファクトリを持つこと
-  it 'has a valid factory' do
-    @user = FactoryGirl.create(:user)
-    expect(@user).to be_valid
-  end
 
   describe '#name' do
     # 名前は一意であること

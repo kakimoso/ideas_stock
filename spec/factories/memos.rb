@@ -7,7 +7,7 @@ FactoryGirl.define do
       "#{n} memo content"
     end
     edit_flag 3
-    association :user
+    association :book
 
     trait :other_memo do
       title 'other memo'
@@ -24,6 +24,17 @@ FactoryGirl.define do
       edit_flag 1
     end
 
+  end
+
+  factory :book_memo, class: :memo do
+    sequence :title do |n|
+      "#{n}.memo title"
+    end
+    sequence :content do |n|
+      "#{n} memo content"
+    end
+    edit_flag 3
+    association :parent_book
   end
 
 end

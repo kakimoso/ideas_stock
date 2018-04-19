@@ -1,6 +1,6 @@
 class MemosController < ApplicationController
   before_action :logged_in_user, only: %i[create new show update]
-  before_action :correct_user, only: %i[update]
+  before_action :editable_memo?, only: %i[update]
 
   def new
     @memo = Memo.new
@@ -8,7 +8,7 @@ class MemosController < ApplicationController
 
   # ログイン中のユーザアカウントに新規メモを追加する
   def create
-    @memo = memo_user.memos.build(memo_params)
+    @memo = current_user.memos.build(memo_params)
     if @memo.save
       redirect_to @memo.user
     else
@@ -17,23 +17,9 @@ class MemosController < ApplicationController
     end
   end
 
-  # # ユーザページで選択されたメモを編集可能にする
-  # def show
-  #   @user = memo_user
-  #   @memos = @user.memos.order(updated_at: :desc)
-  #   begin
-  #     @memo = @memos.find(params[:id])
-  #   rescue ActiveRecord::RecordNotFound
-  #     flash.now[:danger] = 'メモが見つかりません'
-  #     @memo = @memos.first
-  #   end
-  #   render template: 'users/show'
-  # end
-
   # 編集されたメモを保存してユーザページに戻る
   def update
-    @user = memo_user
-    @memo = @user.memos.find(params[:id])
+    @user = User.find_by(id: params[:user_id])
     if @memo.update_attributes(memo_params)
       redirect_to @user
     else
@@ -46,12 +32,13 @@ class MemosController < ApplicationController
   private
 
   # メモの持ち主を検証する
-  def correct_user
-    # ログイン中のユーザのメモか
-    @memo = current_user.memos.find_by(id: params[:id])
-    if @memo.nil?
+  def editable_memo?
+    @memo = Memo.find_by(id: params[:id])
+    @current_user = current_user
+    @is_editable = (@memo.editable? || @memo.user == @current_user)
+    unless @is_editable
       flash[:warning] = 'アクセスエラーが発生しました'
-      redirect_to(memo_user)
+      redirect_to(@current_user)
     end
   end
 
@@ -59,8 +46,4 @@ class MemosController < ApplicationController
     params.require(:memo).permit(:title, :content, :edit_flag)
   end
 
-  # memoコントローラのメソッド実行時にログインしているユーザを返す
-  def memo_user
-    @user = current_user
-  end
 end

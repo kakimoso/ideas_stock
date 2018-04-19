@@ -1,5 +1,6 @@
 class Memo < ApplicationRecord
-  belongs_to :user
+  delegate :user, to: :book
+  belongs_to :book
   validates :title,
             presence: true,
             length: { maximum: 25 }
@@ -11,7 +12,7 @@ class Memo < ApplicationRecord
   # 1.非公開 2.編集不可 3.公開
 
   # メモの所持者もしくは3なら編集可能とする
-  def editable?(current_user)
+  def editable?(current_user = true)
     user = User.find_by(id: user_id)
     (user == current_user || edit_flag == 3)
   end

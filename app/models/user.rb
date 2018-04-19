@@ -6,7 +6,8 @@ class User < ApplicationRecord
   validates :password, presence: true
   validates :password, length: { minimum: 6 },
                        allow_blank: true
-  has_many :memos
+  has_many :books
+  has_many :memos, through: :books
 
   private
 

@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Memo, type: :model do
-  # 有効なファクトリを持つこと
-  it 'has a valid factory' do
-    memo = FactoryGirl.create(:memo)
-    expect(memo).to be_valid
-  end
 
   # ユーザに紐づいていること
   it 'have user information' do

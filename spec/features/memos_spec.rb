@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Memos', type: :feature do
   # ユーザはメモを投稿することができる
   scenario 'user can post memo' do
-    memo = FactoryGirl.build(:memo)
+    memo = FactoryGirl.build(:book_memo)
     user = memo.user
     login_as user
 
@@ -28,7 +28,6 @@ RSpec.feature 'Memos', type: :feature do
     edited_content = '内容編集テスト'
 
     login_as user
-
     visit root_path
     click_link "マイページ / #{user.name}"
 
