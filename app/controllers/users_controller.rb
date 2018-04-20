@@ -23,9 +23,9 @@ class UsersController < ApplicationController
     local_cur_user = current_user
 
     @memos = if @user == local_cur_user
-               @user.memos.order(updated_at: :desc)
+               @user.books.first.memos.order(updated_at: :desc)
              else
-               @user.memos.where.not(edit_flag: 1).order(updated_at: :desc)
+               @user.memos.books.first.where.not(edit_flag: 1).order(updated_at: :desc)
              end
 
     begin
