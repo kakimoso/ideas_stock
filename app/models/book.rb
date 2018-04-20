@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  has_one :memos, foreign_key: 'memo_id'
+  has_many :memos
   belongs_to :user
   validates :name, presence: true,
                    length: { maximum: 25 }

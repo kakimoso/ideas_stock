@@ -7,7 +7,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    @book = @user.books.build(name: 'デフォルト')
+    if @user.save && @book.save
       log_in @user
       redirect_to user_path(@user)
     else
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
     @memos = if @user == local_cur_user
                @user.books.first.memos.order(updated_at: :desc)
              else
-               @user.memos.books.first.where.not(edit_flag: 1).order(updated_at: :desc)
+               @user.books.first.memos.where.not(edit_flag: 1).order(updated_at: :desc)
              end
 
     begin

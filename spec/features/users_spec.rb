@@ -19,8 +19,7 @@ RSpec.feature 'Users', type: :feature do
 
   # ログインできる
   scenario 'user can login' do
-    user = FactoryGirl.create(:user)
-
+    user = FactoryGirl.create(:user, :with_book)
     login_as user
     expect(page).to have_content user.name
     expect(page).to have_current_path "/users/#{user.id}"
@@ -28,7 +27,7 @@ RSpec.feature 'Users', type: :feature do
 
   # 自分の投稿をマイページで確認できる
   scenario 'user can check his post' do
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, :with_book)
     memos = user.memos
     login_as user
     click_link "マイページ / #{user.name}"

@@ -3,9 +3,14 @@ require 'rails_helper'
 RSpec.describe 'UsersApis', type: :request do
   describe 'invalid pattern' do
     before do
-      @memo = FactoryGirl.create(:memo)
+      @memo = FactoryGirl.create(:book_memo)
       @user = @memo.user
-      @other_memo = FactoryGirl.build(:memo, :other_memo, user: @memo.user)
+      @other_memo = FactoryGirl.build(
+        :book_memo,
+        :other_memo,
+        user_id: @user.id,
+        book_id: @memo.book_id
+      )
     end
 
     # 非ログイン時のアクセス無効テスト
@@ -40,13 +45,15 @@ RSpec.describe 'UsersApis', type: :request do
     # ログイン時のアクセス無効テスト
     it 'invalid when logged in' do
       login
-      @other_memo.user = FactoryGirl.create(:user, :other_user)
-      @other_memo.save
+      @other_memo_b = FactoryGirl.create(:book_memo)
+
+      # @other_memo.user_id = FactoryGirl.create(:user, :other_user).id
+      # @other_memo.save
 
       # 他ユーザのメモ編集(update)
-      patch memo_path(@other_memo),
+      patch memo_path(@other_memo_b),
             params: {
-              user_id: @memo.user_id,
+              user_id: @user.id,
               memo: FactoryGirl.attributes_for(:memo)
             }
       aggregate_failures do

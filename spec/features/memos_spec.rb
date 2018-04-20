@@ -18,8 +18,10 @@ RSpec.feature 'Memos', type: :feature do
 
   # ユーザは投稿したメモを編集することができる
   scenario 'user can edit memo' do
-    memo = FactoryGirl.create(:memo)
-    other_memo = FactoryGirl.create(:memo, :other_memo, user: memo.user)
+    memo = FactoryGirl.create(:book_memo)
+    other_memo = FactoryGirl.create(
+      :book_memo, :other_memo, user_id: memo.user, book: memo.book
+    )
     user = memo.user
 
     escape_title = other_memo.title
@@ -52,8 +54,8 @@ RSpec.feature 'Memos', type: :feature do
   # メモの公開・非公開・編集可否テスト
   scenario 'memo visible? and editable?' do
     # 他ユーザでログインし、ユーザのメモのアクセス制御をテストする
-    user = FactoryGirl.create(:user)
-    other_user = FactoryGirl.create(:user, :other_user)
+    user = FactoryGirl.create(:user, :with_book)
+    other_user = FactoryGirl.create(:user, :other_user, :with_book)
     login_as other_user
     visit user_path(user)
 

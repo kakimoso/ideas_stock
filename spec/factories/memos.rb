@@ -36,6 +36,12 @@ FactoryGirl.define do
     edit_flag 3
     association :book
     user_id { book.user }
+
+    trait :other_memo do
+      title 'other memo'
+      content 'this is other memo content'
+    end
+
   end
 
 end
