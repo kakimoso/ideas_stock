@@ -47,9 +47,6 @@ RSpec.describe 'UsersApis', type: :request do
       login
       @other_memo_b = FactoryGirl.create(:book_memo)
 
-      # @other_memo.user_id = FactoryGirl.create(:user, :other_user).id
-      # @other_memo.save
-
       # 他ユーザのメモ編集(update)
       patch memo_path(@other_memo_b),
             params: {

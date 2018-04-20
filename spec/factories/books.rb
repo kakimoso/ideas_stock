@@ -12,7 +12,6 @@ FactoryGirl.define do
 
   factory :sub_book, class: :book do
     name "sub book"
-    # memo_id { [FactoryGirl.create(:book_memo, :without_uid, book_id: self.id)] }
   end
 
 end

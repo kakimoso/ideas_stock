@@ -54,11 +54,5 @@ FactoryGirl.define do
     name 'I have pmemo'
     password 'foobar'
     password_confirmation 'foobar'
-
-    # after(:create) do |user|
-    #   create_list(:memo, 1, user: user)
-    #   create_list(:ro_memo, 1, user: user)
-    #   create_list(:private_memo, 1, user: user)
-    # end
   end
 end
