@@ -8,7 +8,8 @@ class MemosController < ApplicationController
 
   # ログイン中のユーザアカウントの最初のブックに新規メモを追加する
   def create
-    @memo = current_user.books.first.memos.build(memo_params)
+    user = current_user
+    @memo = user.books.first.memos.build(memo_params)
     if @memo.save
       redirect_to @memo.user
     else

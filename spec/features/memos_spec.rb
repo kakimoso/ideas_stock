@@ -51,6 +51,27 @@ RSpec.feature 'Memos', type: :feature do
 
   end
 
+  scenario '自メモ画面に編集確定ボタンとセレクトがあること' do
+    user = FactoryGirl.create(:user, :with_book)
+    login_as user
+    click_link "マイページ / #{user.name}"
+
+    public_memo = user.memos.find_by(edit_flag: 3)
+    click_link display_title(public_memo.title)
+    expect(page).to have_css 'input', class: 'btn', visible: '編集確定'
+    expect(page).to have_css 'select', id: 'memo_edit_flag'
+
+    read_only_memo = user.memos.find_by(edit_flag: 2)
+    click_link display_title(read_only_memo.title)
+    expect(page).to have_css 'input', class: 'btn', visible: '編集確定'
+    expect(page).to have_css 'select', id: 'memo_edit_flag'
+
+    private_memo = user.memos.find_by(edit_flag: 1)
+    click_link display_title(private_memo.title)
+    expect(page).to have_css 'input', class: 'btn', visible: '編集確定'
+    expect(page).to have_css 'select', id: 'memo_edit_flag'
+  end
+
   # メモの公開・非公開・編集可否テスト
   scenario 'memo visible? and editable?' do
     # 他ユーザでログインし、ユーザのメモのアクセス制御をテストする

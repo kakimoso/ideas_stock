@@ -1,15 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Memo, type: :model do
-  it 'factory test', focus: true do
-    memo = FactoryGirl.create(:book_memo)
-  end
 
   # ユーザに紐づいていること
   it 'have user information' do
     memo = FactoryGirl.create(:memo)
     user = memo.user
     expect(user).to be_valid
+  end
+
+  it 'ブックに紐づいていなければ無効であること' do
+    memo = FactoryGirl.create(:memo)
+    memo.book_id = nil
+    expect(memo).to_not be_valid
   end
 
   it '編集ステータスは1, 2, 3のみ有効であること' do

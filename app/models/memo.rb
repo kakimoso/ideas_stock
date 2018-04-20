@@ -8,12 +8,14 @@ class Memo < ApplicationRecord
   validates :edit_flag,
             presence: true,
             format: { with: VALID_EDFLAG_REGEX }
+  validates :book,
+            presence: true
 
   # 1.非公開 2.編集不可 3.公開
 
   # メモの所持者もしくは3なら編集可能とする
   def editable?(current_user = true)
-    user = User.find_by(id: user_id)
+    user = User.find_by(id: self.book.user_id)
     (user == current_user || edit_flag == 3)
   end
 

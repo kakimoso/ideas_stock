@@ -13,7 +13,7 @@
               <div class='col-md-10'>
                 <%= f.submit '編集確定' , class: "btn btn-success" %>
               </div>
-              <% if @memo.user_id == @current_user.id %>
+              <% if @memo.user.id == @current_user.id %>
                 <div class='col-md-3 col-md-offset-7'>
                   <%= f.select :edit_flag, [['公開・編集可', 3],['公開・編集不可', 2],['非公開', 1]], class: "form-control" %>
                 </div>
