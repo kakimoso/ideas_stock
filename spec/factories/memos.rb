@@ -34,7 +34,8 @@ FactoryGirl.define do
       "#{n} memo content"
     end
     edit_flag 3
-    association :parent_book
+    association :book
+    user_id { book.user }
   end
 
 end

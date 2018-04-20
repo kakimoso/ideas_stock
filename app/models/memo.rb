@@ -1,6 +1,6 @@
 class Memo < ApplicationRecord
-  delegate :user, to: :book
   belongs_to :book
+  delegate :user, to: :book
   validates :title,
             presence: true,
             length: { maximum: 25 }

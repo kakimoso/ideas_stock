@@ -8,9 +8,9 @@ FactoryGirl.define do
       name 'other_user'
     end
 
-    after(:create) do |user|
-      create_list(:sub_book, 1, user_id: user)
-    end
+    # after(:create) do |user|
+    #   create_list(:sub_book, 1, user_id: user)
+    # end
 
     # # create実行後に (memoを,5件作る,カラム名: 値)
     # after(:create) do |user|
@@ -25,10 +25,10 @@ FactoryGirl.define do
     password 'foobar'
     password_confirmation 'foobar'
 
-    after(:create) do |user|
-      create_list(:memo, 1, user: user)
-      create_list(:ro_memo, 1, user: user)
-      create_list(:private_memo, 1, user: user)
-    end
+    # after(:create) do |user|
+    #   create_list(:memo, 1, user: user)
+    #   create_list(:ro_memo, 1, user: user)
+    #   create_list(:private_memo, 1, user: user)
+    # end
   end
 end

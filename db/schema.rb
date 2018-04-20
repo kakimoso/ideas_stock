@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_19_084709) do
+ActiveRecord::Schema.define(version: 2018_04_19_135433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2018_04_19_084709) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "edit_flag"
+    t.bigint "book_id"
+    t.index ["book_id"], name: "index_memos_on_book_id"
     t.index ["user_id", "updated_at"], name: "index_memos_on_user_id_and_updated_at"
     t.index ["user_id"], name: "index_memos_on_user_id"
   end
@@ -46,5 +48,6 @@ ActiveRecord::Schema.define(version: 2018_04_19_084709) do
 
   add_foreign_key "books", "memos"
   add_foreign_key "books", "users"
+  add_foreign_key "memos", "books"
   add_foreign_key "memos", "users"
 end

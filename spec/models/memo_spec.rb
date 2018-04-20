@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Memo, type: :model do
+  it 'factory test', focus: true do
+    memo = FactoryGirl.create(:book_memo)
+  end
 
   # ユーザに紐づいていること
   it 'have user information' do
