@@ -23,6 +23,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     local_cur_user = current_user
 
+    # bookを送る
+    @books = @user.books.order(updated_at: :desc)
+
     @memos = if @user == local_cur_user
                @user.books.first.memos.order(updated_at: :desc)
              else

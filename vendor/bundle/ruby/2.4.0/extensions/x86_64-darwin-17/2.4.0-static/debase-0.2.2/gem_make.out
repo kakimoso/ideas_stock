@@ -1,5 +1,5 @@
 current directory: /Users/iwai/アプリケーション/idea_stock/ideas_stock/vendor/bundle/ruby/2.4.0/gems/debase-0.2.2/ext
-/Users/iwai/.rbenv/versions/2.4.1/bin/ruby -r ./siteconf20180417-44989-p3bfa1.rb extconf.rb
+/Users/iwai/.rbenv/versions/2.4.1/bin/ruby -r ./siteconf20180421-39599-167c9n9.rb extconf.rb
 *** extconf.rb failed ***
 Could not create Makefile due to some reason, probably lack of necessary
 libraries and/or headers.  Check the mkmf.log file for more details.  You may
