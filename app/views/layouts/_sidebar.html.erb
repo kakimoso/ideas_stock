@@ -11,55 +11,19 @@
         <% end -%>
         <!-- メモ -->
         <%= content_tag :ul, {:class=> "collapse in",:"aria-expanded"=>true, :style=>"", :id=> b.id} do -%>
-          <% b.memos.each do |b_memo| %>
-            <li>
-              <%= link_to(user_path(params[:id], memo_id: b_memo.id)) do %>
-              <i class="far fa-sticky-note"></i>
-              <%= display_title(b_memo.title) %></a>
-          <% end %>
-        </li>
-      <% end %>
-    <% end -%>
-    <!-- メモ -->
-  </li>
+        <% b.memos.each do |b_memo| %>
+          <li>
+            <%= link_to(user_path(params[:id], memo_id: b_memo.id)) do %>
+            <i class="far fa-sticky-note"></i>
+            <%= display_title(b_memo.title) %></a>
+        <% end %>
+      </li>
+    <% end %>
+  <% end -%>
+  <!-- メモ -->
+</li>
 <% end %>
 <!-- ブック -->
-<% end %>
-<% if !@memos.nil? && !@memos.count.zero? %>
-<li>
-  <a data-toggle="collapse" data-target="#submenu-1">
-    <i class="fas fa-book"></i>
-    book
-    <i class="fa fa-fw fa-angle-down pull-right"></i>
-  </a>
-  <ul id="submenu-1" class="collapse">
-    <!-- メモを回す -->
-    <li>
-      <a href="#">
-        <i class="fa fa-angle-double-right"></i>
-        MEMO 1</a>
-    </li>
-    <li>
-      <a href="#">
-        <i class="fa fa-angle-double-right"></i>
-        MEMO 2</a>
-    </li>
-  </ul>
-</li>
-<% @memos.each do |m| %>
-  <li>
-    <%= link_to(user_path(params[:id], memo_id: m.id)) do %>
-    <i class="far fa-sticky-note"></i>
-    <%= display_title(m.title) %></a>
-<% end %>
-</li>
-<% end %>
-<% else %>
-<li>
-<a>
-<i class="far fa-comment"></i>
-<br>表示できるメモはありません</a>
-</li>
 <% end %>
 </ul>
 </div>

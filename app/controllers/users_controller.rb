@@ -24,7 +24,16 @@ class UsersController < ApplicationController
     local_cur_user = current_user
 
     # bookを送る
-    @books = @user.books.order(updated_at: :desc)
+    @books = @user.books.order(updated_at: :desc).clone
+
+    # @booksのmemosの表示を選別する
+    @books.each do |b|
+      b.memos = if @user == local_cur_user
+                  b.memos.order(updated_at: :desc)
+                else
+                  b.memos.where.not(edit_flag: 1).order(updated_at: :desc)
+                end
+    end
 
     @memos = if @user == local_cur_user
                @user.books.first.memos.order(updated_at: :desc)
